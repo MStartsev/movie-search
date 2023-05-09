@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'servises/tmdb-api';
+import { nanoid } from 'nanoid';
 import css from './Cast.module.css';
 
 import defaultPhotoProfile from '../../images/defaultPhoto.jpg';
@@ -31,7 +32,7 @@ export default function Cast() {
           {cast.length ? (
             <ul className={css.list}>
               {cast.map(actor => (
-                <li className={css.item} key={actor.id}>
+                <li className={css.item} key={nanoid()}>
                   {actor.profile_path ? (
                     <img
                       className={css.profile}

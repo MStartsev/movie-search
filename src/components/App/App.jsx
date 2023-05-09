@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Navigate, Routes, Route } from 'react-router-dom';
 import routes from '../../servises/routes';
-
 import { Layout } from '../../layout/Layout/Layout';
 
 const Home = lazy(() => import('../../views/Home/Home'));
@@ -23,7 +22,7 @@ export const App = () => {
             <Route path={routes.CAST} element={<Cast />} />
             <Route path={routes.REVIEWS} element={<Reviews />} />
           </Route>
-          <Route path="*" element={<Navigate to={routes.HOME} />} />
+          <Route path="*" element={<Navigate to={routes.HOME} replace />} />
         </Route>
       </Routes>
     </Suspense>

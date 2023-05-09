@@ -2,6 +2,7 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useState, useEffect, Suspense, useRef } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { formatDate } from 'servises/formatDate';
+import { nanoid } from 'nanoid';
 import css from './MovieDetails.module.css';
 
 import { getDetails } from 'servises/tmdb-api';
@@ -60,7 +61,7 @@ export default function MovieDetails() {
                       <h3>Genres</h3>
                       <div>
                         {movie.genres.map(genre => (
-                          <p>{genre.name}</p>
+                          <p key={nanoid()}>{genre.name}</p>
                         ))}
                       </div>
                     </>

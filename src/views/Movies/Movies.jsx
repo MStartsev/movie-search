@@ -1,6 +1,8 @@
 import { useSearchParams, useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
+import { DebounceInput } from 'react-debounce-input';
+
 import { getSearchByQuery } from '../../servises/tmdb-api';
 import MoviesList from '../../components/MoviesList/MoviesList';
 
@@ -46,11 +48,12 @@ export default function Movies() {
   return (
     <div>
       <form className={css.form} onSubmit={handleSubmit}>
-        <input
+        <DebounceInput
           className={css.input}
           type="text"
           name="query"
           value={query}
+          debounceTimeout={1000}
           onChange={handleChange}
         />
         <button className={css.button} type="submit">
