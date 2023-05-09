@@ -1,8 +1,10 @@
 import { useSearchParams, useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
-import { getSearchByQuery } from '../servises/tmdb-api';
-import MoviesList from '../components/MoviesList/MoviesList';
+import { getSearchByQuery } from '../../servises/tmdb-api';
+import MoviesList from '../../components/MoviesList/MoviesList';
+
+import css from './Movies.module.css';
 
 export default function Movies() {
   const location = useLocation();
@@ -37,14 +39,23 @@ export default function Movies() {
   };
 
   const handleChange = event => {
+    setSearchParams({ query: event.target.value });
     setQuery(event.target.value);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="query" value={query} onChange={handleChange} />
-        <button type="submit">Submit</button>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <input
+          className={css.input}
+          type="text"
+          name="query"
+          value={query}
+          onChange={handleChange}
+        />
+        <button className={css.button} type="submit">
+          Submit
+        </button>
       </form>
       {isLoading ? (
         <div>Loading the movie...</div>
@@ -52,8 +63,13 @@ export default function Movies() {
         <MoviesList
           movies={movies}
           location={location}
+          query={query}
           title={
-            query ? `Search results by word "${query}"` : `Enter your query`
+            query
+              ? movies.length
+                ? `Search results for "${query}"`
+                : `No search results for "${query}"`
+              : `Enter your query`
           }
         />
       )}

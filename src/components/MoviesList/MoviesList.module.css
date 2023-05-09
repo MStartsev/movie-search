@@ -22,8 +22,12 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  color: rgb(12, 10, 10);
+  font-size: 1.2rem;
   line-height: 2rem;
+  text-align: center;
 }
 
 .item-title {
@@ -36,7 +40,7 @@
 }
 
 .info {
-  font-size: 0.8rem;
+  font-size: 1rem;
   line-height: 2rem;
   padding: 0;
   text-align: center;
@@ -45,9 +49,18 @@
 }
 
 .poster {
+  width: 300px;
+  height: 450px;
   border-radius: 5px;
+}
+.default-poster {
+  width: 300px;
+  height: 152px;
+  border-radius: 5px 5px 0 0;
 }
 
 .backdrop {
+  width: 300px;
+  height: 152px;
   border-radius: 5px 5px 0 0;
 }

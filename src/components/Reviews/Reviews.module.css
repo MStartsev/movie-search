@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-block: 30px;
+}
+
+.title {
+  display: block;
+  font-size: 1.17em;
+  margin-block: 1em;
+  margin-inline: 0px;
+  font-weight: bold;
+}
+
+.text {
+  display: block;
+  padding-block: 30px;
+  font-size: 1em;
+}

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import MoviesList from '../components/MoviesList/MoviesList';
+import MoviesList from '../../components/MoviesList/MoviesList';
 // import { Section } from '../components/Section';
 // import { Loader } from '../components/Loader';
-import { getTrending } from '../servises/tmdb-api';
+import { getTrending } from '../../servises/tmdb-api';
 
 const Home = () => {
   const location = useLocation();

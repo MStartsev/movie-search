@@ -1,5 +1,6 @@
 .header {
-  /* @apply py-4 shadow-md border-b-2 border-slate-200; */
+  border-bottom: 1px solid rgb(51, 48, 48);
+  box-shadow: inset 0px 2px 10px rgba(22, 20, 6, 0.815);
 }
 
 .headerContainer {
@@ -15,13 +16,21 @@
 }
 
 .navList {
-  /* @apply mx-auto flex items-center gap-14; */
+  display: flex;
+  gap: 25px;
+  padding: 30px;
 }
 
 .navLink {
-  /* @apply py-2 text-2xl capitalize transition-all hover:border-b-4 hover:border-indigo-500 hover:text-gray-500 focus:border-b-4 focus:border-indigo-500 focus:text-gray-500; */
+  text-transform: uppercase;
+  padding: 8px 16px;
+
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
 
 .activeLink {
-  /* @apply border-b-4 border-indigo-500 pointer-events-none; */
+  color: rgb(236, 241, 183);
+  border-bottom: 3px solid rgb(93, 50, 211);
 }

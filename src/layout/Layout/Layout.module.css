@@ -1,7 +1,16 @@
 .layout {
-  /* @apply flex h-screen flex-col bg-slate-50; */
+  width: 100vw;
+  min-height: 100vh;
+  background: rgb(2, 13, 62);
+  background: linear-gradient(
+    180deg,
+    rgb(131, 154, 255) 30px,
+    rgba(62, 112, 177, 0.795) 65px,
+    rgb(158, 156, 197) 25%,
+    rgba(203, 209, 177, 1) 45%,
+    rgb(210, 216, 154) 100%
+  );
 }
 
 .main {
-  /* @apply flex-grow bg-gray-100; */
 }

@@ -1,0 +1,57 @@
+.details {
+  display: flex;
+  gap: 30px;
+  padding-inline: 30px;
+}
+.additional {
+  padding-inline: 30px;
+}
+
+.back {
+  display: block;
+  padding: 8px 16px;
+
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  transition: color 0.3s ease-out;
+}
+
+.back:hover {
+  color: rgb(43, 43, 134);
+  font-weight: 500;
+}
+
+.poster {
+  min-width: 200px;
+  min-height: 300px;
+  width: 20vw;
+  height: 30vw;
+}
+
+.container {
+  max-width: calc(80vw - 200px);
+  gap: 20px;
+}
+.nav {
+  display: flex;
+  gap: 50px;
+  padding: 8px 16px;
+}
+
+.nav-item {
+  display: block;
+  padding: 8px 16px;
+  font-weight: 700;
+}
+
+.navLink {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: rgb(59, 24, 70);
+}
+
+.activeLink {
+  color: rgb(6, 104, 252);
+  border-bottom: 3px solid rgb(93, 50, 211);
+}

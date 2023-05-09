@@ -1,7 +1,8 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useState, useEffect, Suspense, useRef } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { formatDate } from 'servises/formatDate';
+import css from './MovieDetails.module.css';
 
 import { getDetails } from 'servises/tmdb-api';
 const IMAGES_BASE_URL = 'https://image.tmdb.org/t/p/w200/';
@@ -25,22 +26,30 @@ export default function MovieDetails() {
 
   return (
     <>
-      <Link to={backLinkLocationRef.current}>&#x2190; Go back</Link>
+      <Link className={css.back} to={backLinkLocationRef.current}>
+        &#x2190; Go back
+      </Link>
       {isLoading ? (
         <div>Loading the movie...</div>
       ) : (
         <>
           {movie && (
             <>
-              <div>
+              <section className={css.details}>
                 {movie.poster_path && (
                   <img
+                    className={css.poster}
                     src={IMAGES_BASE_URL + movie.poster_path}
                     alt={movie.title}
                   />
                 )}
-                <div>
-                  <h2>{movie.title + formatDate(movie.release_date)}</h2>
+                <div className={css.container}>
+                  <h2>
+                    {movie.title +
+                      (!!movie.release_date
+                        ? formatDate(movie.release_date)
+                        : '')}
+                  </h2>
                   {!!movie.vote_average && (
                     <p>Users score: {Math.round(movie.vote_average * 10)}%</p>
                   )}
@@ -49,26 +58,44 @@ export default function MovieDetails() {
                   {!!movie.genres.length && (
                     <>
                       <h3>Genres</h3>
-                      <p>{movie.genres.map(genre => genre.name).join(' ')}</p>
+                      <div>
+                        {movie.genres.map(genre => (
+                          <p>{genre.name}</p>
+                        ))}
+                      </div>
                     </>
                   )}
                 </div>
-              </div>
-              <div>
+              </section>
+              <section className={css.additional}>
                 <h3>Additional information</h3>
-                <ul>
-                  <li>
-                    <Link to="cast">Cast</Link>
+                <ul className={css.nav}>
+                  <li className={css['nav-item']}>
+                    <NavLink
+                      className={({ isActive }) =>
+                        `${isActive && css.activeLink} ${css.navLink}`
+                      }
+                      to="cast"
+                    >
+                      Cast
+                    </NavLink>
                   </li>
-                  <li>
-                    <Link to="reviews">Reviews</Link>
+                  <li className={css['nav-item']}>
+                    <NavLink
+                      className={({ isActive }) =>
+                        `${isActive && css.activeLink} ${css.navLink}`
+                      }
+                      to="reviews"
+                    >
+                      Reviews
+                    </NavLink>
                   </li>
                 </ul>
 
                 <Suspense fallback={<div>Loading subpage...</div>}>
                   <Outlet />
                 </Suspense>
-              </div>
+              </section>
             </>
           )}
         </>

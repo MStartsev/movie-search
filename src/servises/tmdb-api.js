@@ -18,27 +18,20 @@ const getApiData = async (url, data) => {
   }
 };
 
-export const getTrending = async () => {
-  const { results, total_results } = await getApiData('/trending/movie/day');
-  return { results, total_results };
-};
+export const getTrending = async () => await getApiData('/trending/movie/day');
 
-export const getDetails = async movie_id => {
-  const { title, poster_path, vote_average, overview, genres, release_date } =
-    await getApiData(`/movie/${movie_id}`);
-  return { title, poster_path, vote_average, overview, genres, release_date };
-};
+export const getDetails = async movie_id =>
+  await getApiData(`/movie/${movie_id}`);
 
-export const getCredits = async movie_id => {
-  const { cast } = await getApiData(`/movie/${movie_id}/credits`);
-  return { cast };
-};
+export const getCredits = async movie_id =>
+  await getApiData(`/movie/${movie_id}/credits`);
 
-export const getSearchByQuery = async query => {
-  const { results } = await getApiData(`/search/movie`, {
+export const getReviews = async movie_id =>
+  await getApiData(`/movie/${movie_id}/reviews`);
+
+export const getSearchByQuery = async query =>
+  await getApiData(`/search/movie`, {
     params: {
       query,
     },
   });
-  return { results };
-};
